@@ -1,13 +1,7 @@
 # Global AI Workflow
 
-This repository contains the global AI workflow project.
+This repository contains my global AI workflow.
 
-## Setup
+[main-workflow-document.md](https://github.com/teren-papercutlabs/global-ai-workflow/blob/main/main-workflow-document.mdhttps:/) contains the documentation of my workflow.
 
-1. Clone the repository
-2. Install dependencies
-3. Run the application
-
-## Development
-
-More details coming soon...
+The global-cursor-rules folder is a repository of my global cursor rules that are synced across projects using a custom vscode extension.
