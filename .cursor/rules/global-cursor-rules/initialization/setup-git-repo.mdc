@@ -1,0 +1,81 @@
+---
+description: Instructions for initializing and connecting a git repository
+alwaysApply: false
+---
+
+# Git Repository Setup Instructions
+
+This rule provides step-by-step instructions for initializing a new git repository and connecting it to a remote repository.
+
+## Implementation Steps
+
+1. Initialize Git Repository
+   ```bash
+   git init
+   ```
+
+2. Create Initial Git Files
+   ```bash
+   # Create .gitignore
+   echo "node_modules/
+   .env
+   .env.*
+   !.env.example
+   dist/
+   build/
+   coverage/
+   .DS_Store
+   *.log" > .gitignore
+
+   # Create README.md if it doesn't exist
+   [ ! -f README.md ] && echo "# Project Name\n\nProject description goes here." > README.md
+   ```
+
+3. Initial Commit
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   ```
+
+4. Connect to Remote Repository
+   - Request SSH link from user
+   - Add remote and push:
+   ```bash
+   git remote add origin <SSH_LINK>
+   git branch -M main
+   git push -u origin main
+   ```
+
+## Verification Steps
+
+1. Repository Status
+   - [ ] Git repository initialized
+   - [ ] .gitignore created with proper entries
+   - [ ] README.md exists
+   - [ ] Initial commit made
+   - [ ] Remote repository connected
+   - [ ] Code pushed to remote
+
+2. Remote Connection
+   - [ ] SSH link provided and valid
+   - [ ] Remote 'origin' added
+   - [ ] Main branch set as default
+   - [ ] Initial push successful
+
+## Error Handling
+
+1. If repository already initialized:
+   - Skip initialization step
+   - Proceed with remote setup if needed
+
+2. If remote already exists:
+   - Verify remote URL
+   - Update if necessary using:
+   ```bash
+   git remote set-url origin <NEW_SSH_LINK>
+   ```
+
+3. If push fails:
+   - Verify SSH authentication
+   - Check repository permissions
+   - Ensure no conflicts with existing remote repository 

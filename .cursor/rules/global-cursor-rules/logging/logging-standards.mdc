@@ -1,0 +1,179 @@
+---
+alwaysApply: true
+---
+
+# Universal Logging Standards
+
+This rule establishes universal standards for application logging to ensure complete traceability and understanding of system behavior.
+
+## Core Logging Principles
+
+1. Function Execution Tracing
+   - Log before function execution with all input parameters
+   - Log after function completion with return values
+   - Include function name and unique execution ID for correlation
+   - For async functions, ensure both start and completion are logged
+
+2. Error Handling
+   - Log all errors with full context of what caused them
+   - Include stack traces for unexpected errors
+   - Log failed validations with specific reasons
+   - Log error recovery/fallback behavior when used
+
+3. HTTP Communication
+   - Log all incoming requests (except 304s)
+   - Log all outgoing external API calls
+   - Include request method, path, and relevant headers
+   - Log response status and timing
+   - Log request/response bodies when relevant for debugging
+
+4. State Changes
+   - Log all significant state mutations
+   - Log user-triggered actions
+   - Log system-triggered events
+   - Log background job execution status
+
+5. Business Events
+   - Log important business events with context
+   - Use business-relevant terminology in logs
+   - Include user context when available
+   - Log event success/failure outcomes
+
+6. Privacy and Security
+   - Never log sensitive data:
+     * Passwords or authentication tokens
+     * Personal identifiable information (PII)
+     * Financial data
+     * Session tokens
+   - Never log security-sensitive information:
+     * Internal network details
+     * System vulnerabilities
+     * Security configuration
+   - Mask or hash sensitive fields when needed
+
+7. Contextual Information
+   - Include correlation IDs for request tracing
+   - Add user context when available (user ID, role)
+   - Include relevant business context
+   - Add environment/deployment information
+
+8. Log Levels
+   - ERROR: System errors requiring immediate attention
+   - WARN: Potential issues or edge cases hit
+   - INFO: Normal but significant events
+   - DEBUG: Detailed information for troubleshooting
+
+9. Structured Logging Format
+   - Always use object format for logging
+   - Include 'message' field for human-readable description
+   - Add relevant context as additional fields
+   - Keep field names consistent across similar log entries
+
+## Examples
+
+```typescript
+// Function execution
+Logger.info({
+  message: "Starting user registration",
+  email: "masked@email.com",
+  userType: "customer",
+  functionName: "registerUser",
+  executionId: "reg_123"
+});
+
+Logger.info({
+  message: "Completed user registration",
+  userId: "123",
+  success: true,
+  functionName: "registerUser",
+  executionId: "reg_123",
+  duration: "234ms"
+});
+
+// Error handling
+Logger.error({
+  message: "Failed to process payment",
+  orderId: "order_123",
+  reason: "Insufficient funds",
+  customerNotified: true,
+  errorCode: "PAY_001",
+  stack: error.stack
+});
+
+// HTTP request logging
+Logger.info({
+  message: "Outgoing API request",
+  endpoint: "https://api.example.com/users",
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer [REDACTED]"
+  },
+  requestBody: {
+    username: "john_doe",
+    email: "[REDACTED]"
+  }
+});
+
+// State change
+Logger.info({
+  message: "Updated user preferences",
+  userId: "123",
+  changes: {
+    theme: "dark",
+    notifications: "enabled"
+  },
+  triggeredBy: "user",
+  timestamp: "2024-01-20T10:30:00Z"
+});
+
+// Business event
+Logger.info({
+  message: "Subscription renewed",
+  subscriptionId: "sub_123",
+  plan: "premium",
+  period: "annual",
+  amount: 99.99,
+  currency: "USD",
+  customerId: "cust_456"
+});
+```
+
+## Anti-patterns
+
+1. Avoid:
+   - String-only logging without structured data
+   - Inconsistent field names across similar events
+   - Mixing string-based and object-based logging
+   - Logging sensitive data
+   - Logging only errors
+
+2. Bad Examples:
+   ```typescript
+   Logger.error("Error occurred");  // No structured data
+
+   Logger.info("Done", { data: entireDataObject });  // No clear message or structure
+
+   // Inconsistent field naming
+   Logger.info({ msg: "User created", userId: "123" });
+   Logger.info({ message: "User updated", user_id: "123" });
+   ```
+
+3. Good Examples:
+   ```typescript
+   Logger.error({
+     message: "Payment processing failed",
+     orderId: "123",
+     reason: "Gateway timeout",
+     attempt: 2,
+     nextRetryAt: "2024-01-20T11:00:00Z"
+   });
+
+   Logger.info({
+     message: "Order fulfillment completed",
+     orderId: "123",
+     items: 5,
+     shippingMethod: "express",
+     estimatedDelivery: "2024-01-22"
+   });
+   ``` 

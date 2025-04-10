@@ -1,0 +1,28 @@
+---
+description: How to create new global cursor rules
+alwaysApply: false
+---
+# Creating Global Cursor Rules
+
+This rule guides the creation of new global cursor rules that will be shared across all projects.
+
+## Rule Location
+
+Global cursor rules must be created in:
+```
+/home/teren41/environment/global-ai-workflow/.cursor/rules/global-cursor-rules/
+```
+
+The query might specify some subdirectory to be used, that should be found/created within the folder above
+
+## Implementation Process
+
+1. Create the rule file in the global rules directory specified above
+3. Validate the rule format according to [cursor-rule-instructions.mdc](cursor-rule-instructions.mdc)
+4. Provide feedback on the creation process
+
+In case of errors, any partially created files will be cleaned up.
+
+## Additional Information
+
+For detailed instructions on rule format, structure, and best practices, please refer to [cursor-rule-instructions.mdc](cursor-rule-instructions.mdc). 

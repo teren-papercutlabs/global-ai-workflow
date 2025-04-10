@@ -1,0 +1,206 @@
+---
+description: TypeScript coding standards and best practices
+globs: ["**/*.ts", "**/*.tsx"]
+alwaysApply: false
+---
+
+# TypeScript Best Practices and Standards
+
+This rule establishes consistent standards for TypeScript development across projects.
+
+## Type System Usage
+
+### Type Declarations
+
+1. Always use `type` declarations, never interfaces, unless operating within OOP patterns that benefit from interface semantics
+   ```typescript
+   // ✅ Good
+   type User = {
+     id: string;
+     name: string;
+   };
+
+   // ❌ Bad
+   interface User {
+     id: string;
+     name: string;
+   }
+   ```
+
+2. Always look for and reference the types file (typically `types.ts` or similar) to understand the schema of what you're working with.
+
+### Type Best Practices
+
+1. Use explicit type annotations for function parameters and return types:
+   ```typescript
+   // ✅ Good
+   const calculateTotal = (prices: number[]): number => {
+     return prices.reduce((sum, price) => sum + price, 0);
+   };
+
+   // ❌ Bad
+   const calculateTotal = (prices) => {
+     return prices.reduce((sum, price) => sum + price, 0);
+   };
+   ```
+
+2. Prefer union types over enums:
+   ```typescript
+   // ✅ Good
+   type Status = 'pending' | 'active' | 'completed';
+
+   // ❌ Bad
+   enum Status {
+     Pending,
+     Active,
+     Completed,
+   }
+   ```
+
+3. Use type inference for simple variable declarations:
+   ```typescript
+   // ✅ Good
+   const name = 'John'; // TypeScript infers string
+   
+   // ❌ Bad
+   const name: string = 'John'; // Redundant type annotation
+   ```
+
+4. Always use strict null checks and handle null/undefined explicitly:
+   ```typescript
+   // ✅ Good
+   type UserResponse = {
+     data: User | null;
+     error?: string;
+   };
+
+   // Handle nullability
+   const processUser = (response: UserResponse): void => {
+     if (response.data === null) {
+       console.error('No user data available');
+       return;
+     }
+     // Now TypeScript knows response.data is User
+     processUserData(response.data);
+   };
+   ```
+
+## Component and Function Organization
+
+1. Use type aliases for prop types in React components:
+   ```typescript
+   // ✅ Good
+   type ButtonProps = {
+     label: string;
+     onClick: () => void;
+     variant?: 'primary' | 'secondary';
+   };
+
+   const Button = ({ label, onClick, variant = 'primary' }: ButtonProps): JSX.Element => {
+     // ...
+   };
+   ```
+
+2. Use discriminated unions for complex state management:
+   ```typescript
+   type State = 
+     | { status: 'idle' }
+     | { status: 'loading' }
+     | { status: 'success'; data: ResponseData }
+     | { status: 'error'; error: string };
+   ```
+
+## Error Handling
+
+1. Create custom error types for better error handling:
+   ```typescript
+   type ApiError = {
+     code: string;
+     message: string;
+     details?: Record<string, unknown>;
+   };
+
+   type Result<T> = {
+     data: T | null;
+     error: ApiError | null;
+   };
+   ```
+
+## Performance Considerations
+
+1. Use `readonly` for arrays and objects that shouldn't be modified:
+   ```typescript
+   type Config = {
+     readonly apiUrl: string;
+     readonly timeout: number;
+     readonly allowedOrigins: readonly string[];
+   };
+   ```
+
+2. Use const assertions for literal types:
+   ```typescript
+   const config = {
+     environment: 'production',
+     features: ['auth', 'payments'] as const,
+     version: 1,
+   } as const;
+   ```
+
+## Code Organization
+
+1. Group related types in dedicated type files:
+   ```typescript
+   // types/user.ts
+   type User = {
+     id: string;
+     profile: UserProfile;
+     settings: UserSettings;
+   };
+
+   // types/index.ts
+   export * from './user';
+   export * from './auth';
+   // ...
+   ```
+
+2. Use barrel exports for cleaner imports:
+   ```typescript
+   // components/index.ts
+   export * from './Button';
+   export * from './Input';
+   export * from './Form';
+   ```
+
+## Security Considerations
+
+1. Use strict types for sensitive data:
+   ```typescript
+   type SensitiveData = {
+     readonly password: string;
+     readonly apiKey: string;
+   } & {
+     readonly [K in keyof SensitiveData]: string;
+   };
+   ```
+
+## Documentation
+
+1. Use TSDoc comments for public APIs and complex functions:
+   ```typescript
+   /**
+    * Processes user data and returns a formatted result
+    * @param userData - Raw user data from the API
+    * @returns Formatted user data ready for display
+    * @throws {ValidationError} If user data is invalid
+    */
+   const processUserData = (userData: RawUserData): FormattedUserData => {
+     // ...
+   };
+   ```
+
+Remember to:
+- Keep types simple and focused
+- Use type inference where it improves readability
+- Handle edge cases explicitly
+- Document complex type relationships
+- Use strict TypeScript configuration 

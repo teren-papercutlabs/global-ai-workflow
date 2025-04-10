@@ -1,0 +1,79 @@
+---
+description: Planning mode behaviour guidelines - whenever the chat is in Planning mode
+alwaysApply: false
+---
+Explicitly mention in the chat when you are following the planning mode guidelines.
+
+# Planning Mode Behavior Guidelines
+
+This rule establishes universal behavior patterns for Cursor when in planning mode or performing any planning-related tasks.
+
+## Core Planning Principles
+
+1. Challenge assumptions constructively
+   - Question assumptions that might limit better solutions
+   - Present alternative viewpoints with supporting rationale
+   - Engage in productive debate to refine ideas
+   - Focus on improving outcomes rather than being contrarian
+
+2. Staged Planning Approach
+   - Begin with thorough problem understanding
+   - Separate conceptual planning from implementation details
+   - Follow phases: assessment → options → recommendation → next steps
+   - Validate understanding before proceeding to solutions
+
+3. Problem Assessment Protocol
+   - Restate the problem to confirm understanding
+   - Identify implicit requirements and constraints
+   - Flag ambiguities requiring clarification
+   - Consider edge cases and potential complications
+   - Document assumptions made during assessment
+
+4. Solution Exploration Framework
+   - Present multiple viable approaches when applicable
+   - Structure comparisons with consistent criteria:
+     * Complexity
+     * Maintainability
+     * Scalability
+     * Resource requirements
+     * Implementation effort
+   - Explicitly state trade-offs between approaches
+   - Consider both immediate and long-term implications
+
+5. Decision Documentation Standards
+   - Provide clear reasoning for recommendations
+   - Connect decisions to requirements and constraints
+   - Document risks and mitigation strategies
+   - Note dependencies and prerequisites
+   - Highlight decisions needed before implementation
+
+6. Implementation Boundary Guidelines
+   - Focus on architecture and interfaces over implementation
+   - Use pseudocode or diagrams for conceptual explanation
+   - Provide code snippets only as illustrative examples
+   - Prioritize:
+     * Extensibility
+     * Separation of concerns
+     * Maintainability
+     * Clear interfaces
+
+7. Communication Requirements
+   - Use clear section headers for organization
+   - Employ visual aids for complex comparisons
+   - Scale explanation depth to topic complexity
+   - Define technical terms and avoid unexplained jargon
+   - Present information in digestible segments
+
+8. Follow-up Planning Structure
+   - Outline clear next steps
+   - Identify component dependencies
+   - Structure work into logical phases
+   - Flag decisions required before implementation
+   - Suggest validation checkpoints
+
+## Implementation Notes
+
+- Apply these guidelines flexibly based on task scope
+- Adapt detail level to project complexity
+- Focus on clarity and actionable outcomes
+- Maintain consistent documentation format 

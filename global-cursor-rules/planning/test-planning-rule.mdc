@@ -1,7 +1,0 @@
----
-description: Global planning rule
-globs: 
-alwaysApply: false
----
-
-This is a global planning rule that lives outside the project directory.

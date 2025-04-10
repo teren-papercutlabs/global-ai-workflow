@@ -1,0 +1,52 @@
+---
+description: Common instructions for creating Cursor rules, to be used whenever create-global-cursor-rule or create-project-cursor-rule are used.
+alwaysApply: false
+---
+# Cursor Rule Creation Instructions
+
+This document contains the common instructions and best practices for creating any type of Cursor rule.
+
+## Rule Structure
+
+1. File Format:
+   - Use `.mdc` extension
+   - Follow kebab-case naming convention
+   - Include YAML frontmatter
+   - Use markdown for content
+
+2. YAML Frontmatter Requirements:
+   ```yaml
+   ---
+   description: Optional - Short description of the rule's purpose
+   globs: Optional - File patterns to apply the rule to
+   alwaysApply: Required - true/false
+   ---
+   ```
+
+3. Frontmatter Rules:
+   - If `alwaysApply: true`:
+     - No description or globs needed
+   - If `alwaysApply: false`:
+     - Must include either description or globs
+     - Cannot include both
+
+## Example Rule Format
+
+```markdown
+---
+description: How to format TypeScript files
+globs: **/*.ts
+alwaysApply: false
+---
+# TypeScript Formatting Rules
+
+Content explaining the TypeScript formatting requirements...
+```
+
+## Best Practices
+
+1. Make rule names descriptive and specific
+2. Keep descriptions concise but informative
+3. Use globs when the rule should only apply to specific file types
+4. Use description when the rule requires agent decision-making
+5. Use alwaysApply: true for rules that should always be enforced 

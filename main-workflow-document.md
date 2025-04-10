@@ -121,7 +121,34 @@ Caveats
 
 [Wavebox](https://wavebox.io/) is a browser that I use to [add more details]
 
-## Claude (w/ projects)
+## WIP - New full-Cursor workflow for planning instead of jumping between Claude Projects and Cursor
+
+### Rule System
+
+The Cursor rule system provides a structured way to maintain consistent coding practices and workflows across projects. It consists of two main components: global rules and project-specific rules.
+
+#### Global Rules Architecture
+
+- **Central Management**: Global rules are managed in a dedicated project called `global-ai-workflow` under `.cursor/rules/global-cursor-rules/`
+- **Cross-Project Synchronization**: Other projects maintain synchronization with global rules through:
+  - Copying the directory structure - each project's `.cursor/rules/global` syncs with `global-ai-workflow`s `.cursor/rules/global-cursor-rules/` on folder open or can be manually triggered via ctrl-shift-P "Cursor: Sync Global Rules"
+  - Using symlinks to reference global rules
+  - Management via a custom VSCode extension
+
+This architecture ensures that:
+
+- Rules are maintainable in a single source of truth
+- Changes propagate consistently across projects
+- Projects can extend global rules with their own specific requirements
+- Rule creation follows standardized processes
+
+#### Rule Creation Process
+
+- Global rules must only be created using the agent from within the `global-ai-workflow` project
+- Cursor will read and follow the rules for this defined in create-global-cursor-rule and cursor-rule-instructions
+- Project-specific rules can be created using the agent from any project, it will follow the rules defined in create-project-cursor-rule and cursor-rule-instructions
+
+### Claude (w/ projects)
 
 ### Overview
 

@@ -1,0 +1,34 @@
+---
+description: How to create new project-specific cursor rules
+alwaysApply: false
+---
+# Creating Project-Specific Cursor Rules
+
+This rule guides the creation of new cursor rules that are specific to the current project.
+
+## Rule Location
+
+Project-specific cursor rules should be created in the `.cursor/rules` directory of your current project. These rules will only apply to the project they are created in and will not be synced across other projects.
+
+## Implementation Process
+
+1. Create the rule file in the project's `.cursor/rules` directory
+2. Validate the rule format according to [cursor-rule-instructions.mdc](cursor-rule-instructions.mdc)
+3. Provide feedback on the creation process
+
+## Project Rule Considerations
+
+1. Project rules should focus on project-specific requirements
+2. They take precedence over global rules when conflicts occur
+3. They should be documented in the project's documentation
+4. Consider whether the rule might be useful globally before creating it as a project rule
+
+## Error Handling
+
+The rule will terminate with an error if:
+- `.cursor/rules` directory doesn't exist in the current project
+- A rule with the same name already exists
+
+## Additional Information
+
+For detailed instructions on rule format, structure, and best practices, please refer to [cursor-rule-instructions.mdc](cursor-rule-instructions.mdc). 

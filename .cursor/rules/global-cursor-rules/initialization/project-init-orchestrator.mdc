@@ -1,0 +1,61 @@
+---
+description: Master orchestrator for initializing new projects
+alwaysApply: false
+---
+
+# Project Initialization Orchestrator
+
+This rule orchestrates the entire project initialization process by coordinating all initialization-related rules in the correct order.
+
+## Current Initialization Steps
+
+1. Git Repository Setup
+   - Follow [setup-git-repo.mdc](setup-git-repo.mdc) instructions
+   - Complete all verification steps before proceeding
+
+2. Logger Setup
+   - Follow [setup-winston-logger.mdc](setup-winston-logger.mdc) instructions
+   - Verify logger functionality before proceeding
+
+## Future Extensions
+
+This orchestrator is designed to be extended with additional initialization steps. When new initialization rules are added:
+
+1. They should be listed in this file in the correct order
+2. Dependencies between steps should be clearly documented
+3. Each step should include verification requirements
+
+## Implementation Process
+
+1. Pre-initialization Checks
+   - Verify clean working directory
+   - Check for existing configuration
+   - Confirm all required tools are installed
+
+2. Sequential Execution
+   - Execute each initialization step in order
+   - Verify completion before proceeding to next step
+   - Handle any errors before continuing
+
+3. Post-initialization Verification
+   - Confirm all components are properly initialized
+   - Verify integrations between components
+   - Document any manual steps required
+
+## Error Recovery
+
+If any initialization step fails:
+
+1. Log the error and current state
+2. Provide cleanup instructions if needed
+3. Document manual recovery steps
+4. Offer rollback options where possible
+
+## Future Rule Integration
+
+When adding new initialization rules:
+
+1. Add them to this orchestrator in appropriate order
+2. Document any dependencies on other initialization steps
+3. Include verification requirements
+4. Update error recovery procedures as needed 
