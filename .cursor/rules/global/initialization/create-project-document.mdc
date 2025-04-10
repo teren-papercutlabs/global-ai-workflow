@@ -1,0 +1,61 @@
+---
+description: Instructions for creating the initial project documentation
+alwaysApply: false
+---
+# Create Project Document
+
+This rule guides the creation of the initial project documentation following the standardized template.
+IMPORTANT: do NOT jump to writing the project documentaiton. The first step is to ask me a series of comprehensive questions to establish the required context as described below.
+
+## Required Information
+
+Before creating the project document, gather the following information:
+
+1. Project Overview
+   - No specific questions here, the summary of the below questions should act as the project overview
+
+2. Problem Details
+   - Current challenges and pain points, and any metrics/data to quantify
+   - Cost implications of current situation
+   - Impact on users/business
+
+3. Solution Approach
+   - Core features and capabilities
+   - Key technical components
+   - Integration requirements
+   - Technology stack decisions
+
+4. Scope Definition
+   - Core requirements
+   - MVP features
+   - Out-of-scope items
+   - Future considerations
+
+## Implementation Process
+
+1. Create the documentation directory:
+   ```bash
+   mkdir -p documentation
+   ```
+
+2. Use the template from [project-document-template.mdc](../planning/project-document-template.mdc) to create `/documentation/project-document.md`
+
+3. Follow the template structure, ensuring all sections are properly filled out
+
+4. Review and validate the document content
+
+## Best Practices
+
+1. Be specific and quantitative where possible
+2. Include actual data and metrics
+3. Keep technical details in README.md
+4. Focus on clarity and conciseness
+5. Update as project requirements evolve
+
+## Verification Steps
+
+1. Ensure all template sections are completed
+2. Verify metrics and data points are accurate
+3. Confirm scope is clearly defined
+4. Check that technical details are minimal
+5. Validate with stakeholders if possible 

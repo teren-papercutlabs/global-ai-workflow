@@ -14,7 +14,7 @@ This rule provides instructions for setting up Winston logger with standardized 
    - Include clickable VSCode file links
    - Color-code different elements:
      * Strings: green
-     * Numbers: white
+     * Numbers: white:
      * Booleans: yellow
      * Null/undefined: dim
      * Keys: cyan

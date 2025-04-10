@@ -1,0 +1,52 @@
+---
+description: Universal testing standards and principles
+alwaysApply: false
+---
+# Universal Testing Standards
+
+Core principles for writing and maintaining tests across any technology stack.
+
+## Test Structure
+
+1. Arrange-Act-Assert Pattern
+   - Arrange: Set up test prerequisites
+   - Act: Execute the system under test
+   - Assert: Verify the expected outcome
+
+2. Test Isolation
+   - Each test must be independent
+   - No shared mutable state between tests
+   - Clean up after each test
+
+3. Naming Convention
+   - Format: `describe('ComponentName', () => test('should behavior when condition'))`
+   - Be descriptive about expected behavior
+   - Include the scenario being tested
+
+## Test Quality
+
+1. Single Responsibility
+   - One logical assertion per test
+   - Test one specific behavior
+   - Avoid testing multiple scenarios
+
+2. Test Data
+   - Use minimal test data needed
+   - Make test data intention obvious
+   - Avoid magic numbers/strings
+
+3. Coverage Requirements
+   - Test all critical paths
+   - Test edge cases and error conditions
+   - Test public interfaces 
+
+## Rules to follow
+
+Test patterns
+
+global/testing/test-patterns/unit-testing.mdc
+global/testing/test-patterns/integration-testing.mdc
+
+Stack-specific
+
+global/testing/framework-specific/jest-testing.mdc

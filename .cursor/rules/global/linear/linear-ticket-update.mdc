@@ -1,0 +1,54 @@
+---
+description: Instructions for updating Linear tickets based on Cursor conversations
+alwaysApply: false
+---
+# Linear Ticket Updates
+
+This rule defines how to update existing Linear tickets based on Cursor conversations.
+
+## Update Process
+
+1. Identify Ticket Context
+   - Extract ticket ID from conversation
+   - Verify ticket exists in Linear
+   - Load current ticket content
+
+2. Track Changes
+   - Monitor conversation for relevant updates
+   - Identify changes to:
+     * Implementation details
+     * Testing requirements
+     * Acceptance criteria
+     * Technical notes
+
+3. Update Format
+   - Preserve existing ticket structure
+   - Clearly mark updated sections
+   - Maintain change history
+
+## Implementation Details
+
+1. Read Linear configuration from `.linear.json`
+2. Use MCP Linear API to:
+   - Fetch current ticket content
+   - Apply updates
+   - Add comments for significant changes
+
+## Best Practices
+
+1. Content Updates
+   - Preserve original context
+   - Add, don't replace, information
+   - Mark superseded information
+
+2. Change Documentation
+   - Log reason for changes
+   - Note key discussion points
+   - Reference related conversations
+
+## Error Handling
+
+If update fails:
+1. Log error details
+2. Save intended updates locally
+3. Provide manual update instructions 

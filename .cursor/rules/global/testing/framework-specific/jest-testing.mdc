@@ -1,0 +1,64 @@
+---
+description: Jest-specific testing standards and setup
+globs: "**/*.test.{js,jsx,ts,tsx}"
+alwaysApply: false
+---
+# Jest Testing Standards
+
+Essential Jest-specific testing patterns and configurations.
+
+## Setup
+
+1. Required Dependencies
+   ```json
+   {
+     "jest": "^29.0.0",
+     "@types/jest": "^29.0.0",
+     "ts-jest": "^29.0.0"  // If using TypeScript
+   }
+   ```
+
+2. Basic Configuration
+   ```js
+   // jest.config.js
+   module.exports = {
+     testEnvironment: 'node',  // or 'jsdom' for browser
+     setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+     testMatch: ['**/*.test.{js,jsx,ts,tsx}']
+   }
+   ```
+
+## Core Patterns
+
+1. Mocking
+   ```typescript
+   // Mock function
+   const mockFn = jest.fn();
+   
+   // Mock module
+   jest.mock('./path/to/module');
+   
+   // Mock implementation
+   jest.spyOn(object, 'method').mockImplementation(() => 'value');
+   ```
+
+2. Async Testing
+   ```typescript
+   test('async operation', async () => {
+     await expect(asyncFn()).resolves.toBe(expected);
+     // or
+     const result = await asyncFn();
+     expect(result).toBe(expected);
+   });
+   ```
+
+3. Setup/Teardown
+   ```typescript
+   beforeAll(() => {
+     // Run once before all tests
+   });
+   
+   afterEach(() => {
+     jest.clearAllMocks();
+   });
+   ``` 

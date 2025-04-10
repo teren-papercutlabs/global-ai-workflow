@@ -9,13 +9,36 @@ This rule orchestrates the entire project initialization process by coordinating
 
 ## Current Initialization Steps
 
-1. Git Repository Setup
+1. Technology Stack Selection
+   - Ask user to specify their project's technology stack
+   - This will influence subsequent setup steps like .gitignore templates
+
+2. Git Repository Setup
    - Follow [setup-git-repo.mdc](setup-git-repo.mdc) instructions
+   - Use appropriate .gitignore template based on selected stack
    - Complete all verification steps before proceeding
 
-2. Logger Setup
+3. Logger Setup (if the project is nodeJS)
    - Follow [setup-winston-logger.mdc](setup-winston-logger.mdc) instructions
    - Verify logger functionality before proceeding
+
+4. Jest Testing Setup (if the project is nodeJS)
+   - Install Jest and related dependencies
+   - Create initial test configuration
+   - Set up test scripts in package.json
+   - Create example test to verify setup
+   - Ensure test runner works before proceeding
+
+5. Linear Integration Setup
+   - Follow [linear/linear-config-setup.mdc](../linear/linear-config-setup.mdc) instructions
+   - Create and verify Linear configuration
+   - Ensure API connectivity before proceeding
+
+6. Project Documentation
+   - Start a new chat with the instruction to create project documentation
+   - Follow [create-project-document.mdc](create-project-document.mdc) instructions
+   - Ensure all required sections are completed
+   - Verify documentation is properly stored in /documentation/project-document.md
 
 ## Future Extensions
 

@@ -1,0 +1,89 @@
+---
+description: Instructions for setting up Linear project configuration during initialization
+alwaysApply: false
+---
+# Linear Project Configuration Setup
+
+This rule guides the setup of Linear project configuration during project initialization.
+
+## Configuration Process
+
+1. Ask the user for Linear project information:
+   - Project name (human-readable name)
+
+2. Get team information:
+   - Use `mcp_linear_linear_getTeams` to fetch available teams
+   - If multiple teams exist, ask user to select the correct team
+   - Store the selected team's ID
+
+3. Get workflow states for the team:
+   - Use `mcp_linear_linear_getWorkflowStates` with the team ID
+   - Store all workflow states and their IDs
+
+4. Get all available labels:
+   - Use `mcp_linear_linear_getLabels` to fetch labels
+   - Store all label IDs and names
+   - Note the Cursor-generated label ID specifically
+
+5. Get or create project:
+   - Use `mcp_linear_linear_getProjects` to find existing project
+   - If project doesn't exist, create it with `mcp_linear_linear_createProject`
+   - Store the project ID
+
+6. Create `.linear.json` configuration file:
+```json
+{
+  "project": {
+    "id": "<project-uuid>",
+    "name": "<project-name>",
+    "team_id": "<team-id>"
+  },
+  "ticket_defaults": {
+    "labelIds": ["<cursor-label-id>"],
+    "status": "Todo"
+  },
+  "metadata": {
+    "workflow_states": [
+      {
+        "id": "<state-id>",
+        "name": "<state-name>",
+        "type": "<state-type>"
+      }
+    ],
+    "labels": [
+      {
+        "id": "<label-id>",
+        "name": "<label-name>"
+      }
+    ]
+  }
+}
+```
+
+7. Verify Configuration:
+   - Validate project UUID exists in Linear
+   - Confirm project is accessible
+   - Verify team ID is valid
+   - Test basic Linear API connectivity
+   - Verify all workflow states and labels are valid
+
+## Implementation Details
+
+1. The configuration file should be created at the project root
+2. File permissions should be set appropriately
+3. The file should be added to version control
+4. The metadata section should be kept up to date with periodic syncs
+
+## Error Handling
+
+If configuration fails:
+1. Log the error with specific details
+2. Remove any partially created configuration
+3. Provide clear instructions for manual setup if needed
+
+## Metadata Maintenance
+
+The metadata section containing workflow states and labels should be periodically updated to stay in sync with Linear:
+1. Consider implementing a refresh mechanism
+2. Update metadata when Linear configuration changes are detected
+3. Provide utility functions to refresh metadata on demand 

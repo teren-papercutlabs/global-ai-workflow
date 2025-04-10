@@ -1,0 +1,29 @@
+---
+description: Instructions for executing Linear tickets with proper logging and testing
+alwaysApply: false
+---
+
+# Linear Ticket Execution Rule
+
+This rule provides instructions for executing Linear tickets with proper logging and testing integration.
+
+## Execution Steps
+
+1. Ticket Information Retrieval
+   - Use Linear MCP to fetch ticket details to work on
+
+2. Logging Integration
+   - Use existing logging utility in the project
+   - Follow logging standards in logging-standards.mdc
+
+3. Testing Requirements
+   - Follow testing standards from testing-standards.mdc
+   - Write unit tests for ticket processing
+
+4. Update ticket
+   - Move status to 'in review'
+
+## References
+
+- [Logging Standards](../logging/logging-standards.mdc)
+- [Testing Standards](../testing/testing-standards.mdc) 

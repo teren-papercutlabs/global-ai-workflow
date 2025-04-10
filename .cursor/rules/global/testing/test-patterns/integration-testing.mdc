@@ -1,0 +1,81 @@
+---
+description: Essential integration testing patterns and practices
+alwaysApply: false
+---
+# Integration Testing Patterns
+
+Core patterns for effective integration testing.
+
+## Key Principles
+
+1. Test Scope
+   - Test component interactions
+   - Minimize mocking
+   - Use real dependencies when practical
+   - Focus on integration points
+
+2. Test Environment
+   - Use test databases
+   - Reset state between tests
+   - Mirror production config
+
+## Common Patterns
+
+1. API Testing
+   ```typescript
+   describe('UserAPI', () => {
+     test('should create and retrieve user', async () => {
+       // Create
+       const response = await request(app)
+         .post('/users')
+         .send({ name: 'Test User' });
+       
+       const userId = response.body.id;
+       
+       // Retrieve
+       const user = await request(app)
+         .get(`/users/${userId}`)
+         .expect(200);
+       
+       expect(user.body.name).toBe('Test User');
+     });
+   });
+   ```
+
+2. Database Integration
+   ```typescript
+   describe('UserRepository', () => {
+     beforeEach(async () => {
+       await db.migrate.latest();
+     });
+     
+     afterEach(async () => {
+       await db.migrate.rollback();
+     });
+     
+     test('should persist user', async () => {
+       const repo = new UserRepository(db);
+       await repo.save({ name: 'Test User' });
+       const user = await repo.findByName('Test User');
+       expect(user).toBeDefined();
+     });
+   });
+   ```
+
+3. Service Integration
+   ```typescript
+   test('should process order end-to-end', async () => {
+     const orderService = new OrderService(
+       new PaymentGateway(),
+       new InventoryService(),
+       new NotificationService()
+     );
+     
+     const result = await orderService.process({
+       items: [{id: 1, quantity: 1}],
+       payment: {type: 'credit', amount: 100}
+     });
+     
+     expect(result.status).toBe('completed');
+   });
+   ``` 

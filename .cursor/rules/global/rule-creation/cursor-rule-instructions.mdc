@@ -24,6 +24,7 @@ This document contains the common instructions and best practices for creating a
    ```
 
 3. Frontmatter Rules:
+   Unless absolutely certain that the rule should be globally applied, use alwaysApply: false
    - If `alwaysApply: true`:
      - No description or globs needed
    - If `alwaysApply: false`:

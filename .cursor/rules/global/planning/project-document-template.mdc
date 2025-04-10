@@ -1,0 +1,69 @@
+---
+description: Template for creating comprehensive project documentation
+alwaysApply: false
+---
+# Project Document Template
+
+This template provides a standardized structure for initial project documentation.
+
+## Document Structure
+
+The project document should be created at `/documentation/project-document.md` and follow this structure:
+
+```markdown
+# [Project Name]
+
+## Project Overview
+[Concise description of what the project is and its primary purpose]
+- What problem does it solve?
+- Who are the primary users/stakeholders?
+- What is the expected impact?
+
+## Problem Statement
+[Clear description of the problem being solved, with quantitative data when available]
+- Current pain points and challenges
+- Inefficiencies in existing processes
+- Costs (time, money, resources) of the current situation
+- Impact on users/business
+- Relevant metrics and data points
+
+## Solution
+[High-level description of your proposed solution]
+- Core features and capabilities
+- Key technical components
+- Integration points
+- User interaction flow
+- Key technologies/frameworks used
+
+## Project Scope
+[Clear definition of what's in and out of scope]
+- In scope:
+  - Core features and functionality
+  - Essential integrations
+  - MVP requirements
+- Out of scope:
+  - Features for future consideration
+  - Non-essential enhancements
+  - Known limitations
+- Future considerations:
+  - Potential enhancements
+  - Scalability considerations
+  - Future integration possibilities
+```
+
+## Usage Guidelines
+
+1. Keep the document focused on high-level planning and objectives
+2. Use clear, concise language
+3. Include specific metrics and data points when available
+4. Separate technical implementation details into README.md
+5. Update the document as project scope or requirements change
+
+## Best Practices
+
+1. Be specific and quantitative where possible
+2. Include relevant stakeholder input
+3. Keep technical details minimal - those belong in README.md
+4. Focus on the "why" and "what" rather than the "how"
+5. Use bullet points for better readability
+6. Include actual metrics and data when available 

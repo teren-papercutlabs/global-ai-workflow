@@ -1,0 +1,79 @@
+---
+description: Instructions for creating Linear tickets from Cursor conversations
+alwaysApply: false
+---
+# Linear Ticket Creation
+
+This rule defines how to create Linear tickets from Cursor conversations.
+IMPORTANT: In addition to writing the ticket, you will use the Linear MCP server to create the ticket.
+Read .linear.json for the configuration, and create the ticket with the correct defaults and project. Use this structure, no more or less fields:
+
+{
+  "title": "Sample title",
+  "description": "Sample Description",
+  "projectId": "78fb5ae6-7c01-4f6e-b620-39de6f1a9361"
+  "teamId": "454c9eaa-1a75-4433-bad6-b32b7af67d4a",
+  "labelIds": [
+    "f0e7a973-5344-43fa-8725-7feb4b9cefa0",
+    "ab1d9179-8f25-43ae-8b6d-dcbe5db4789b"
+  ],
+  "stateId": "2bdc8e5b-454f-437e-88f3-c21571f5f5c5"
+}
+
+Return the ticket URL/ID for reference in a clickable link in your chat response.
+
+## Ticket Creation Template
+
+When creating a ticket, follow this format:
+
+```markdown
+# Ticket Title
+[Concise title that encapsulates the task]
+
+## Context
+[Explain what the feature is meant to achieve for the user]
+
+## Description
+[Explanation of how the feature works]
+
+## Implementation Details
+[How the code is to be written and would work, without actual code]
+
+## Testing Requirements
+- List specific behaviors to test
+- Identify important edge cases
+- Specify any mocks or stubs needed
+- Follow Given-When-Then pattern for all tests
+- Place test files alongside code (e.g., userService.js → userService.test.js)
+- Use Jest for testing
+
+## Acceptance Criteria
+- List all requirements that must be met
+- Include passing all specified unit tests
+
+## Technical Notes
+[Any additional technical considerations]
+```
+
+## Implementation Process
+
+1. Read Linear configuration from `.linear.json`
+2. Generate ticket content following the template above
+3. Create ticket in Linear using the MCP Linear API
+4. 
+
+## Important Notes
+
+- Focus only on unit tests (integration tests handled separately)
+- Use direct commands (e.g., "Create a function that..." not "Consider creating...")
+- Reference type files instead of including full schemas
+- Avoid changes to unrelated code
+- Include JSDoc documentation requirements
+- Specify logging requirements per logging standards
+
+## Error Handling
+
+If ticket creation fails:
+1. Log the error with context
+2. Save ticket content locally if possible
+3. Provide manual creation instructions 

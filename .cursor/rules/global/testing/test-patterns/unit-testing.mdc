@@ -1,0 +1,55 @@
+---
+description: Essential unit testing patterns and practices
+alwaysApply: false
+---
+# Unit Testing Patterns
+
+Core patterns for effective unit testing.
+
+## Key Principles
+
+1. Test Scope
+   - Test one unit of work
+   - Mock all external dependencies
+   - Focus on business logic
+
+2. Test Cases
+   - Happy path
+   - Edge cases
+   - Error conditions
+   - Boundary values
+
+## Common Patterns
+
+1. Pure Function Testing
+   ```typescript
+   describe('calculateTotal', () => {
+     test('should add tax to subtotal', () => {
+       const result = calculateTotal(100, 0.1);
+       expect(result).toBe(110);
+     });
+   });
+   ```
+
+2. Mock Dependencies
+   ```typescript
+   // Instead of:
+   class OrderProcessor {
+     constructor(private database: Database) {}
+   }
+   
+   // Test with:
+   test('should process order', () => {
+     const mockDb = { save: jest.fn() };
+     const processor = new OrderProcessor(mockDb);
+   });
+   ```
+
+3. State Testing
+   ```typescript
+   test('should update counter', () => {
+     const counter = new Counter(0);
+     counter.increment();
+     expect(counter.value).toBe(1);
+   });
+   ``` 
