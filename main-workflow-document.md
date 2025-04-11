@@ -3,8 +3,7 @@
 [https://ezyang.github.io/ai-blindspots/](https://ezyang.github.io/ai-blindspots/)  
 [Elie's cursor rules](https://x.com/elie2222/status/1907070722960187745?t=qpM7b05p1tMkPnMhte3xSQ&s=19)  
 [Tester, Architect & PM walked into a codebase: How to make vibe coding work](https://pixels.place/p/vibe-coding-decoded-taming-the-chaos?utm_source=share&utm_medium=android&r=ql82&triedRedirect=true)
-
-# Introduction
+[Beyond the AI MVP - What it really takes](https://blog.lawrencejones.dev/ai-mvp/)
 
 At the start of this year, I decided to try starting my own startup as a solo, bootstrapped SaaS founder. I don't have any formal software engineering education or experience, although I have written extensive amounts of Google Apps Script that effectively runs as software, with Google Sheets as the frontend/database and Google Apps Script as the backend.
 

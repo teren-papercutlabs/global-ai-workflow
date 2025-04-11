@@ -6,7 +6,7 @@ alwaysApply: false
 
 This rule defines how to create Linear tickets from Cursor conversations.
 IMPORTANT: In addition to writing the ticket, you will use the Linear MCP server to create the ticket.
-Read .linear.json for the configuration, and create the ticket with the correct defaults and project. Use this structure, no more or less fields:
+Read .linear.json for the configuration, you should not need to make additional MCP tool calls to get more data, and create the ticket with the correct defaults and project. Use this structure, no more or less fields:
 
 {
   "title": "Sample title",
@@ -40,7 +40,7 @@ When creating a ticket, follow this format:
 [How the code is to be written and would work, without actual code]
 
 ## Testing Requirements
-- List specific behaviors to test
+- Only unit testing cases to be described here, do not speak of any manual test
 - Identify important edge cases
 - Specify any mocks or stubs needed
 - Follow Given-When-Then pattern for all tests

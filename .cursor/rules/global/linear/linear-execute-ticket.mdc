@@ -11,6 +11,8 @@ This rule provides instructions for executing Linear tickets with proper logging
 
 1. Ticket Information Retrieval
    - Use Linear MCP to fetch ticket details to work on
+   - For workflow states, first check .linear.json in the metadata.workflow_states section
+   - Only make API calls for workflow states if .linear.json is not available
 
 2. Logging Integration
    - Use existing logging utility in the project

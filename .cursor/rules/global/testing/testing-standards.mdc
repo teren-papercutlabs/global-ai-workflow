@@ -18,7 +18,13 @@ Core principles for writing and maintaining tests across any technology stack.
    - No shared mutable state between tests
    - Clean up after each test
 
-3. Naming Convention
+3. Test File Location
+   - Use co-located tests in `__tests__` directories
+   - Place `__tests__` directory in the same directory as the code being tested
+   - Test files should mirror the name of the file being tested
+   - Example: `src/components/Button.tsx` → `src/components/__tests__/Button.test.tsx`
+
+4. Naming Convention
    - Format: `describe('ComponentName', () => test('should behavior when condition'))`
    - Be descriptive about expected behavior
    - Include the scenario being tested

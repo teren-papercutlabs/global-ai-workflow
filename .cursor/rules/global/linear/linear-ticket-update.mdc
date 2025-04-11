@@ -21,6 +21,7 @@ This rule defines how to update existing Linear tickets based on Cursor conversa
      * Acceptance criteria
      * Technical notes
 
+
 3. Update Format
    - Preserve existing ticket structure
    - Clearly mark updated sections
